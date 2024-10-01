@@ -1,24 +1,56 @@
 //When using a model, need to use export
 
-//Define type Bird
-export type Bird = {
+//class Animals
+export class Animal {
     id: number;
     name: string;
-    type: 0; //bird
+    type: number; 
+
+    constructor(id: number, name: string, type: number) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+}
+
+// class childrent Bird
+export class Bird extends Animal{
     wingSpan: number;
-    isFly: boolean;
-};
+    isFly: boolean; 
 
-//Define type Dog
-export type Dog = {
-    id: number;
-    name: string;
-    type: 1; //dog
-    isTrained?: boolean;
-};
+    constructor(id: number, name: string, wingSpan: number, isFly: boolean) {
+        super(id, name, 0) //bird
+        this.wingSpan = wingSpan;
+        this.isFly = isFly;
+    }
+}
 
-//Animal configuration
-export type Animal = Bird | Dog;
+// class childrent Bird
+export class Dog extends Animal{
+    isTrained?: boolean; 
+
+    constructor(id: number, name: string, isTrained?: boolean) {
+        super(id, name, 1) //Dog
+        this.isTrained = isTrained;
+    }
+}
+
+// export type Bird = {
+//     id: number;
+//     name: string;
+//     type: 0; //bird
+//     wingSpan: number;
+//     isFly: boolean;
+// };
+
+// export type Dog = {
+//     id: number;
+//     name: string;
+//     type: 1; //dog
+//     isTrained?: boolean;
+// }; 
+
+// export type Animal = Bird | Dog;
 
 //&Animal: extends from Animal, does not belong to the original Animal type, ?: No need to provide a value for the tag, resuls: undefined
 export type FinalAnimal = Animal & { 
@@ -46,16 +78,16 @@ export function getAnimalType(animal: Animal):number {
 
 // List of animals
 export const animals: Animal[] = [
-    { id: 1, name: 'Sparrow', type: 0, wingSpan: 25, isFly: true },
-    { id: 2, name: 'Eagle', type: 0, wingSpan: 200, isFly: true },
-    { id: 3, name: 'Parrot', type: 0, wingSpan: 30, isFly: true },
-    { id: 4, name: 'Penguin', type: 0, wingSpan: 60, isFly: false },
-    { id: 5, name: 'Owl', type: 0, wingSpan: 150, isFly: true },
-    { id: 6, name: 'Bulldog', type: 1, isTrained: true },
-    { id: 7, name: 'Beagle', type: 1, isTrained: false },
-    { id: 8, name: 'Labrador', type: 1, isTrained: true },
-    { id: 9, name: 'Poodle', type: 1 },
-    { id: 10, name: 'German Shepherd', type: 1, isTrained: true },
+    new Bird(1, 'Sparrow', 25, true),
+    new Bird(2, 'Eagle', 200, true),
+    new Bird(3, 'Parrot', 30, true),
+    new Bird(4, 'Penguin', 60, false),
+    new Bird(5, 'Owl', 150, true),
+    new Dog(6, 'Bulldog', true),
+    new Dog(7, 'Beagle', false),
+    new Dog(8, 'Labrador', true),
+    new Dog(9, 'Poodle'),
+    new Dog(10, 'German Shepherd', true),
 ];
 
 // List of finalAnimals
@@ -64,7 +96,6 @@ export const finalAnimals: FinalAnimal[] = [
         id: 10,
         name: 'German Shepherd',
         type: 1,
-        isTrained: true,
         tags: {
             test1: 'test1',
             test2: 2,
