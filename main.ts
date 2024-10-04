@@ -1,5 +1,5 @@
 //import file = alias
-import {getAnimalName, getAnimalType, animals ,finalAnimals, } from '@src/animal'; 
+import {getAnimalName, getAnimalType, animals ,finalAnimals } from 'src/animal'; 
 
 //Get animal names & types from the animals list
 animals.forEach(animal => {
@@ -16,5 +16,3 @@ finalAnimals.forEach(finalAnimal => {
         });
     }
 });
-
-//Run: ts-node -r tsconfig-paths/register main.ts
