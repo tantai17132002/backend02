@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "ts-node -r tsconfig-paths/register main.ts"
+  },
+  "dependencies": {
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}
