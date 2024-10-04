@@ -71,21 +71,28 @@ export interface Dog extends Animal {
 }; 
 
 //interface tags
+/*C1
 export type Tags = {
     [key: string]: string | number | boolean;
 };
+*/
 
-//
+//C2
+export type Tags= Record<string, string | number | boolean>
+
+//C1
+//define FinalAnimal
 export type FinalAnimal = Animal & {
     tags?: Tags;
-    children?: Child[];
+    // children?: Child[];
+    children?: FinalAnimal[];
     isTrained?: boolean;
 }
-
+//C2
 //&: extends from Animal, does not belong to the original Animal type, ?: No need to provide a value for the tag, resuls: undefined
-export interface Child extends Animal { 
-    isTrained?: boolean;
-}
+// export interface Child extends Animal { 
+//     isTrained?: boolean;
+// }
 
 //Gets an object of type Animal and returns the object's name
 export function getAnimalName(animal: Animal):string {
